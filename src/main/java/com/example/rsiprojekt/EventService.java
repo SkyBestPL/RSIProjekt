@@ -26,14 +26,26 @@ public class EventService {
 
     @WebMethod
     public String addEvent(Event e) {
-        events.put(e.name, e);
+        if (e.id == null || e.id.isEmpty()) {
+            e.id = UUID.randomUUID().toString();
+        }
+        events.put(e.id, e);
         EventRepository.saveEvents(events);
-        return "Dodano wydarzenie: " + e.name;
+        return "Dodano wydarzenie o ID: " + e.id;
     }
 
     @WebMethod
-    public Event getEventDetails(String name) {
-        return events.get(name);
+    public Event getEventById(String id) {
+        return events.get(id);
+    }
+
+    @WebMethod
+    public List<Event> getEventsByName(String name) {
+        List<Event> result = new ArrayList<>();
+        for (Event e : events.values()) {
+            if (e.name.equals(name)) result.add(e);
+        }
+        return result;
     }
 
     @WebMethod
@@ -65,9 +77,19 @@ public class EventService {
 
     @WebMethod
     public String updateEvent(Event e) {
-        events.put(e.name, e);
+        events.put(e.id, e);
         EventRepository.saveEvents(events);
-        return "Zaktualizowano wydarzenie: " + e.name;
+        return "Zaktualizowano wydarzenie: " + e.name + " (" + e.id + ")";
+    }
+
+    @WebMethod
+    public String deleteEvent(String id) {
+        if (events.remove(id) != null) {
+            EventRepository.saveEvents(events);
+            return "Usunięto wydarzenie o id: " + id;
+        } else {
+            return "Nie znaleziono wydarzenia o id: " + id;
+        }
     }
 
     @WebMethod
