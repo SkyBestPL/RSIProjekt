@@ -7,4 +7,4 @@
             url-pattern="/eventService" />
 </endpoints>
 
-<!-- https:\\localhost:8443/RSIProjekt_war_exploded/eventService?wsdl -->
+<!-- https://localhost:8443/RSIProjekt_war_exploded/eventService?wsdl -->

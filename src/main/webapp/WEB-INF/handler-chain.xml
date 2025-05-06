@@ -1,0 +1,6 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>
+<handler-chain xmlns="http://java.sun.com/xml/ns/javaee">
+    <handler>
+        <handler-class>com.example.rsiprojekt.LoggingHandler</handler-class>
+    </handler>
+</handler-chain>-->
