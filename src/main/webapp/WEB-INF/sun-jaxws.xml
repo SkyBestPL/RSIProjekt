@@ -6,3 +6,5 @@
             implementation="com.example.rsiprojekt.EventService"
             url-pattern="/eventService" />
 </endpoints>
+
+<!-- https:\\localhost:8443/RSIProjekt_war_exploded/eventService?wsdl -->
