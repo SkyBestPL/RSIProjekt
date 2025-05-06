@@ -25,6 +25,11 @@ public class EventService {
     private static final Map<String, Event> events = EventRepository.loadEvents();
 
     @WebMethod
+    public List<Event> getAllEvents() {
+        return new ArrayList<>(events.values());
+    }
+
+    @WebMethod
     public String addEvent(Event e) {
         if (e.id == null || e.id.isEmpty()) {
             e.id = UUID.randomUUID().toString();
@@ -92,7 +97,7 @@ public class EventService {
         }
     }
 
-    @WebMethod
+    /*@WebMethod
     public DataHandler getEventsAsPDF() {
         File file = new File("event_report.pdf");
 
@@ -117,5 +122,5 @@ public class EventService {
 
         DataSource source = new FileDataSource(file);
         return new DataHandler(source);
-    }
+    }*/
 }
