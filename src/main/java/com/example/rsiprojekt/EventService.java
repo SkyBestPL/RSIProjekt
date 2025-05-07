@@ -19,7 +19,7 @@ import java.util.*;
 
 @WebService
 @MTOM
-//@HandlerChain(file = "/handler-chain.xml")
+@HandlerChain(file = "handler-chain.xml")
 public class EventService {
 
     private static final Map<String, Event> events = EventRepository.loadEvents();
@@ -97,7 +97,7 @@ public class EventService {
         }
     }
 
-    /*@WebMethod
+    @WebMethod
     public DataHandler getEventsAsPDF() {
         File file = new File("event_report.pdf");
 
@@ -122,5 +122,5 @@ public class EventService {
 
         DataSource source = new FileDataSource(file);
         return new DataHandler(source);
-    }*/
+    }
 }
